@@ -1,8 +1,3 @@
-'''
-In this program, we print out all the text data from our twitter JSON file.
-Please explain the comments to students as you code.
-'''
-
 import json
 from textblob import TextBlob
 import matplotlib.pyplot as plt
@@ -15,6 +10,7 @@ tweetData = json.load(tweetFile)
 tweetFile.close()
 
 #------------------------------
+
 # print(type(tweetData))
 # print(type(tweetData[0]))
 # # tweetFile.close()
@@ -47,101 +43,47 @@ for i in range(0,len(tweetData)):
 
 # print(tweets)
 # #-------------------------------
-# tb = TextBlob("You are a brilliant computer scientist.")
-# print(tb.polarity)
-#
-# pltList = []
-# for i in tweets:
-# 	blob1 = TextBlob(i)
-# 	polar1 = blob1.polarity
-# 	pltList.append(polar1)
-# print(pltList)
-#------------------------------
-#another way to do that code ^^^
-# for i in range(0,len(listo)):
-# 	blob1+TextBlob(listoftweets[i])
-# polar1 = blob.polarity
-# polarityList.appond(polar1).
-#--------------------
+tb = TextBlob("You are a brilliant computer scientist.")
+print(tb.polarity)
 
-# import matplotlib.pyplot asa plt
+pltList = []
+for i in tweets:
+	blob1 = TextBlob(i)
+	polar1 = blob1.polarity
+	pltList.append(polar1)
+print(pltList)
+#------------------------------
+print(pltList)
+print(min(pltList), max(pltList))
+n, bins, patches = plt.hist(pltList)
+plt.axis([-0.55, 1.05, 0, 50])
+# plt.show()
+plt.savefig("izear.png")
+
+
+
 # plt.bar([1,3,5,7,9],[5,2,7,8,2], label="Example one")
 # plt.bar([2,4,6,8,10],[8,6,2,5,6], label="Example two" color='g')
 # plt.legend()
 # plt.()
 
-#---------------------------------
+#------------------------------
 # print(text)
 
 # for item in text:
 # 	long_string += item+''
-#
+#'''
 # wordcloud = WordCloud().generate(long_string)
-
-tweetD = " "
-for tweet in tweets:
-	tweet += " "
-	tweetD += tweet
-print(tweetD)
-
-
-wordcloud = WordCloud().generate(tweetD)
-plt.imshow(wordcloud, interpolation= 'bilinear')
-plt.axis("off")
-plt.show()
-plt.savefig('alischart.png')
-
-# id.tweet polarity
-# texts =[tweets]
-# polarityList = [0.0,0.9]
-# leest = []
-# # tweetData[i['id']]
+# #generates wordcloud
+# tweetD = " "
+# for tweet in tweets:
+# 	tweet += " "
+# 	tweetD += tweet
+# print(tweetD)
 #
-# for i in range(len(tweetData)):
-# 	dictionaree = {}
-# 	dictionaree["id"] = tweetData[i]['id']
-# 	dictionaree["polarity"] = polarityList[i]
-# 	dictionaree["tweet"] = texts[i]
-# 	leest.append(dictionaree)
-
-#----------------------------------
-
-# We then print the data of ONE tweet:
-# the [0] denotes the *first* tweet object.
-# # We access parts of the tweet using ["NameOfPart"].
-# print("Tweet id: ", tweetData[0]["id"])
-
-# 	return count
-#
-# 	numA = 0
-# 	index = 0
-# 	alpha = ""
-# 	num = [0] * 26
-#
-# for tweet in tweetData:
-# 	if "text"
-# print(avg)
-# # First ask students how they might print the text object:
-# # Then show them the following code
-# print("Tweet text: ", tweetData[0]["text"])
-#
-#
-# # First ask students how might they use loops
-# # to print the ["text"] of all the tweets:
-#
-# # Show them the following two options:
-#
-# # Explain how here, we're using index and
-# # counting the number of tweets in the tweetData
-# # using the python len() function.
-# for idx in range(len(tweetData)):
-# 	print("Tweet text: " + tweetData[idx]["text"])
-#
-# # Explain here how Python lets you get objects
-# # directly without having to use an index.
-# for tweet in tweetData:
-# 	print("Tweet text: " + tweet["text"])
-
-# Encourage students to think about how there are
-# often multiple solutions for each problem, and
-# how each solution might have strenghts and drawbacks.
+# wordcloud = WordCloud(height = 1000, width = 1000 ).generate(tweetD)
+# plt.imshow(wordcloud, interpolation= 'bilinear')
+# plt.axis("off")
+# plt.show()
+# plt.savefig('alischart.png')
+# '''
