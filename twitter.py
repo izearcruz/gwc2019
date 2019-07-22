@@ -3,14 +3,10 @@ from textblob import TextBlob
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
-# "r" read only because we are only going to look at the data.
 tweetFile = open("tweets_small.json", "r")
-# We use the JSON library to get data from the file as JSON data.
 tweetData = json.load(tweetFile)
 tweetFile.close()
-
 #------------------------------
-
 # print(type(tweetData))
 # print(type(tweetData[0]))
 # # tweetFile.close()
@@ -42,36 +38,68 @@ for i in range(0,len(tweetData)):
 	tweets.append(word)
 
 # print(tweets)
-# #-------------------------------
-tb = TextBlob("You are a brilliant computer scientist.")
-print(tb.polarity)
-
-pltList = []
-for i in tweets:
-	blob1 = TextBlob(i)
-	polar1 = blob1.polarity
-	pltList.append(polar1)
-print(pltList)
 #------------------------------
-print(pltList)
-print(min(pltList), max(pltList))
-n, bins, patches = plt.hist(pltList)
-plt.axis([-0.55, 1.05, 0, 50])
+# def counter(string, letter):
+# 	counter = 0
+# 	for let in string:
+# 		if let.lower() == letter:
+# 			counter += 1
+# 	return counter
+#
+# tweetstring = ""
+# for tweet in tweets:
+# 	tweet = tweet + " "
+# 	tweetstring += tweet
+# print(tweetstring)
+#
+# counter(tweetstring, "a")
+# alpha = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]
+# letters = sorted(alpha)
+#
+# occurrences = []
+# for letter in letters:
+# 	occurrences.append(counter(tweetstring, letter))
+# print(occurrences)
+# print(min(occurrences), max(occurrences))
+# plt.hist(occurrences)
+# plt.axis([min(occurrences), max(occurrences), 0, 10])
 # plt.show()
-plt.savefig("izear.png")
+#------------------------------------------------
+def wordcount(stringoftweet, string1):
 
+	counter = 0
+	string1 = string1.lower()
+	wordlist = stringoftweet.split(' ')
+	for item in wordlist:
+		if item == string1:
+			counter += 1
+	return counter
 
+wordcountlist = []
+for item in tweets:
+	wordoccurrences = wordcount(item, "the")
+	wordcountlist.append(wordoccurrences)
 
-# plt.bar([1,3,5,7,9],[5,2,7,8,2], label="Example one")
-# plt.bar([2,4,6,8,10],[8,6,2,5,6], label="Example two" color='g')
-# plt.legend()
-# plt.()
-
-#------------------------------
-# print(text)
-
-# for item in text:
-# 	long_string += item+''
+	n, bins, patches = plt.hist(wordcountlist, 50)
+	plt.axis([min(wordcountlist), max(wordcountlist), 0, 10])
+	plt.grid(True)
+	plt.show()
+#-----------------------------------------------
+# tb = TextBlob("You are a brilliant computer scientist.")
+# print(tb.polarity)
+#
+# pltList = []
+# for i in tweets:
+# 	blob1 = TextBlob(i)
+# 	polar1 = blob1.polarity
+# 	pltList.append(polar1)
+# print(pltList)
+# #------------------------------
+# print(pltList)
+# print(min(pltList), max(pltList))
+# n, bins, patches = plt.hist(pltList)
+# plt.axis([-0.55, 1.05, 0, 50])
+# plt.show()
 #'''
 # wordcloud = WordCloud().generate(long_string)
 # #generates wordcloud
@@ -80,7 +108,7 @@ plt.savefig("izear.png")
 # 	tweet += " "
 # 	tweetD += tweet
 # print(tweetD)
-#
+#---------------------------------
 # wordcloud = WordCloud(height = 1000, width = 1000 ).generate(tweetD)
 # plt.imshow(wordcloud, interpolation= 'bilinear')
 # plt.axis("off")
